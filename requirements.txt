@@ -1,1 +1,6 @@
+PyQt5
+PyQtWebEngine
+folium
+exifread
+branca
 
