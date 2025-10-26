@@ -1,0 +1,1 @@
+print(" PhotoGeoApp is ready ")
