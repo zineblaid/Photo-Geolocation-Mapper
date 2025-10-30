@@ -1,10 +1,10 @@
-#  Import des bibliothèques
+
 import os
 from exif import Image
 import folium
 import webbrowser
 
-#  Fonction pour convertir DMS en décimal
+
 def dms_to_decimal(dms, ref):
     deg, min, sec = dms
     decimal = deg + min/60 + sec/3600
@@ -12,7 +12,7 @@ def dms_to_decimal(dms, ref):
         decimal *= -1
     return decimal
 
-# Parcourir les images et extraire les coordonnées
+
 image_folder = "images"
 locations = []
 
@@ -26,7 +26,7 @@ for filename in os.listdir(image_folder):
                 lon = dms_to_decimal(img.gps_longitude, img.gps_longitude_ref)
                 locations.append((lat, lon, filename))
 
-#  Créer la carte et ajouter les points
+
 if locations:
     first_lat, first_lon, _ = locations[0]
     map = folium.Map(location=[first_lat, first_lon], zoom_start=15)
@@ -34,7 +34,7 @@ if locations:
         folium.Marker([lat, lon], popup=filename).add_to(map)
     map.save("map.html")
 
-#  Frontend minimal : afficher la carte
+
 print("Carte générée !")
 choice = input("Tape 1 pour ouvrir la carte : ")
 if choice == "1":
